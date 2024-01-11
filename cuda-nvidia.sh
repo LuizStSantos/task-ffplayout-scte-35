@@ -3,7 +3,6 @@
 # Instalar pacotes necessários
 apt install git curl build-essential wget sudo -y
 
-
 # Bloqueia o driver nouveau
 cat <<EOF > /etc/modprobe.d/blacklist-nouveau.conf
 blacklist nouveau
