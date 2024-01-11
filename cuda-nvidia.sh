@@ -3,10 +3,10 @@
 apt update
 apt install -y git curl build-essential wget sudo
 # Bloqueia o driver nouveau
-bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-rmmod nouveau
-update-grub
+cat <<EOF > /etc/modprobe.d/blacklist-nouveau.conf
+blacklist nouveau
+options nouveau modeset=0
+EOF
 # Atualiza o initramfs
 update-initramfs -u
 # Download e instalação do NVIDIA CUDA 12.3.2
