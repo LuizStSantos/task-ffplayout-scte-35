@@ -1,17 +1,22 @@
 #!/bin/bash
 
+# Verifica se o script está sendo executado como root
+if [[ $EUID -ne 0 ]]; then
+    echo "Este script deve ser executado como root. Por favor, use sudo ou mude para o usuário root."
+    exit 1
+fi
+
 # Atualizar o sistema
 apt update && apt upgrade -y
 
 # Instalar pacotes necessários
-apt install git curl build-essential wget -y
+apt install git curl build-essential wget sudo -y
 
-# Adicionar configurações ao arquivo de blacklist
-bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-
-# Remover módulo nouveau
-rmmod nouveau
+# Bloqueia o driver nouveau
+cat <<EOF > /etc/modprobe.d/blacklist-nouveau.conf
+blacklist nouveau
+options nouveau modeset=0
+EOF
 
 # Atualizar initramfs
 update-initramfs -u
