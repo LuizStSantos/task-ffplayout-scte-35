@@ -15,6 +15,9 @@ blacklist nouveau
 options nouveau modeset=0
 EOF
 
+# Desvincular a console virtual vtcon1
+echo 0 > /sys/class/vtconsole/vtcon1/bind
+
 # Parar o serviço LightDM (substitua pelo comando correto se estiver usando outro gerenciador de exibição)
 service lightdm stop
 
