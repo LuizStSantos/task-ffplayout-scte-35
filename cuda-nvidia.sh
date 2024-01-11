@@ -1,7 +1,6 @@
 #!/bin/bash
 apt update
 apt install -y git curl build-essential wget sudo
-# Bloqueia o driver nouveau
 cat <<EOF > /etc/modprobe.d/blacklist-nouveau.conf
 blacklist nouveau
 options nouveau modeset=0
