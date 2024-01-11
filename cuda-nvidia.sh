@@ -6,6 +6,9 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+# Adiciona o novo repositório
+echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware" >> /etc/apt/sources.list
+
 # Atualizar o sistema
 apt update && apt upgrade -y
 
