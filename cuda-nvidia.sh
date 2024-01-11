@@ -18,6 +18,12 @@ EOF
 # Parar o serviço LightDM (substitua pelo comando correto se estiver usando outro gerenciador de exibição)
 service lightdm stop
 
+# Remover (descarregar) o módulo do kernel nouveau
+rmmod nouveau
+
+# Atualizar o GRUB
+update-grub
+
 # Atualizar initramfs
 update-initramfs -u
 
