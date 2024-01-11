@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Atualizar o sistema
-apt update && apt upgrade -y
+apt update && apt upgrade
 
 # Instalar pacotes necessários
 apt install git curl build-essential wget
