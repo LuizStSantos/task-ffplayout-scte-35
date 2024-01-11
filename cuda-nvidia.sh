@@ -7,8 +7,6 @@ apt install -y git curl build-essential wget sudo
 # Bloqueia o driver nouveau
 bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
 bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-echo 0 > /sys/class/vtconsole/vtcon1/bind
-service lightdm stop
 rmmod nouveau
 update-grub
 
