@@ -10,22 +10,8 @@ fi
 apt install git curl build-essential wget sudo -y
 
 # Bloqueia o driver nouveau
-cat <<EOF > /etc/modprobe.d/blacklist-nouveau.conf
-blacklist nouveau
-options nouveau modeset=0
-EOF
-
-# Desvincular a console virtual vtcon1
-echo 0 > /sys/class/vtconsole/vtcon1/bind
-
-# Parar o serviço LightDM (substitua pelo comando correto se estiver usando outro gerenciador de exibição)
-service lightdm stop
-
-# Remover (descarregar) o módulo do kernel nouveau
-rmmod nouveau
-
-# Atualizar o GRUB
-update-grub
+echo "blacklist nouveau" | sudo tee /etc/modprobe.d/blacklist-nouveau.conf
+echo "options nouveau modeset=0" | sudo tee -a /etc/modprobe.d/blacklist-nouveau.conf
 
 # Atualizar initramfs
 update-initramfs -u
