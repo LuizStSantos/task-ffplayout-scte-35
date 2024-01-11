@@ -5,10 +5,12 @@ apt update
 apt install -y git curl build-essential wget sudo
 
 # Bloqueia o driver nouveau
-cat <<EOF > /etc/modprobe.d/blacklist-nouveau.conf
-blacklist nouveau
-options nouveau modeset=0
-EOF
+bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+echo 0 > /sys/class/vtconsole/vtcon1/bind
+service lightdm stop
+rmmod nouveau
+update-grub
 
 # Atualiza o initramfs
 update-initramfs -u
