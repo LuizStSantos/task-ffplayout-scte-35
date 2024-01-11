@@ -12,9 +12,12 @@ EOF
 # Atualizar initramfs
 update-initramfs -u
 
+# Stop the display manager (assuming lightdm, adjust if necessary)
+sudo service lightdm stop
+
 # Baixar e instalar CUDA
 wget -c https://developer.download.nvidia.com/compute/cuda/12.3.2/local_installers/cuda_12.3.2_545.23.08_linux.run
-chmod +x cuda_12.3.2_545.23.08_linux.run
-./cuda_12.3.2_545.23.08_linux.run --override --driver --toolkit --silent
+chmod 755 cuda_12.3.2_545.23.08_linux.run
+sh ./cuda_12.3.2_545.23.08_linux.run --override --driver --toolkit --silent
 
 echo "Instalação concluída com sucesso."
