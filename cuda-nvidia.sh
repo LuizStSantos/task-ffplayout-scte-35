@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Verifica se o script está sendo executado como root
-if [[ $EUID -ne 0 ]]; then
-    echo "Este script deve ser executado como root. Por favor, use sudo ou mude para o usuário root."
-    exit 1
-fi
-
 # Instalação dos pacotes necessários
 apt update
 apt install -y git curl build-essential wget sudo
