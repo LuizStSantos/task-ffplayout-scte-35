@@ -4,7 +4,7 @@
 apt update && apt upgrade -y
 
 # Instalar pacotes necessários
-apt install git curl build-essential wget -y
+apt install git curl build-essential wget
 
 # Adicionar configurações ao arquivo de blacklist
 bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
