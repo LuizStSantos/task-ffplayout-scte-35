@@ -10,13 +10,13 @@ options nouveau modeset=0
 EOF
 
 # Atualizar initramfs
-update-initramfs -u
+sudo update-initramfs -u
 
 # Remover o módulo nouveau
-rmmod nouveau
+sudo rmmod nouveau
 
 # Atualizar configuração do GRUB
-update-grub
+sudo update-grub
 
 # Stop the display manager (assuming lightdm, adjust if necessary)
 sudo service lightdm stop
