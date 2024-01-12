@@ -12,6 +12,12 @@ EOF
 # Atualizar initramfs
 update-initramfs -u
 
+# Remover o módulo nouveau
+rmmod nouveau
+
+# Atualizar configuração do GRUB
+update-grub
+
 # Stop the display manager (assuming lightdm, adjust if necessary)
 sudo service lightdm stop
 
@@ -26,3 +32,4 @@ apt install linux-headers-$(uname -r) -y
 sh ./cuda_12.3.2_545.23.08_linux.run --override --driver --toolkit --silent
 
 echo "Instalação concluída com sucesso."
+echo "Reinicie o Servidor/Computador."
