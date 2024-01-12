@@ -29,6 +29,7 @@ chmod 755 cuda_12.3.2_545.23.08_linux.run
 apt install linux-headers-$(uname -r) -y
 
 # Executar o instalador do CUDA
+echo "Instalando Driver Cuda 12.3.2_545.23.08 aguarde um momento"
 sh ./cuda_12.3.2_545.23.08_linux.run --override --driver --toolkit --silent
 
 echo "Instalação concluída com sucesso."
