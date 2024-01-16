@@ -15,7 +15,7 @@ ou
 ```shell
 sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/cuda-nvidia.sh | sudo bash
 ```
-# Script Python3 - Pip3 - x9k3
+# Script ffmpeg - python3 - pip3 - x9k3
 ```shell
 wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/ffmpeg-python3-pip-x9k3.sh | bash
 ```
