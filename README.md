@@ -8,7 +8,7 @@ ou
 sudo apt install wget
 ```
 # Scritp Cuda Nvidia "Testado Debian 12"
-Esse script instala o git, curl build-eesential sudo
+Esse script instala o git, curl, build-eesential e sudo
 bloqueia o driver nouveau e atualiza o initramfs
 remove o modulo nouveau e atualiza configuração do GRUB
 e para o serviço lightdm faz o download do cuda nvidia; 
