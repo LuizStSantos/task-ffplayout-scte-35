@@ -1,5 +1,5 @@
 # Guia scritps
-# Pacotes nessesario
+# Pacotes necessário
 ```shell
 apt install wget
 ```
@@ -8,6 +8,12 @@ ou
 sudo apt install wget
 ```
 # Scritp Cuda Nvidia "Testado Debian 12"
+Esse script instala o git, curl build-eesential sudo
+bloqueia o driver nouveau e atualiza o initramfs
+remove o modulo nouveau e atualiza configuração do GRUB
+e para o serviço lightdm faz o download do cuda nvidia; 
+da a apermissão 755 para ele installa o linux-headers,
+executa a instalação do cuda nvidia.
 ```shell
 wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/cuda-nvidia.sh | bash
 ```
