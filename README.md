@@ -16,6 +16,9 @@ ou
 sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/cuda-nvidia.sh | sudo bash
 ```
 # Script ffmpeg - python3 - pip3 - x9k3
+Esse script instala o FFmpeg o Python 3 e pip
+remove o diretório rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED
+e instala a biblioteca x9k3 para hls SCTE-35.
 ```shell
 wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/ffmpeg-python3-pip-x9k3.sh | bash
 ```
