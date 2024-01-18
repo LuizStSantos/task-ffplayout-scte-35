@@ -12,27 +12,24 @@ def save_to_txt(directory, filename, content):
     with open(path, 'a') as file:
         file.write(content)
 
-def execute_shell_command(command, success_file, error_file, current_user, current_clip):
+def execute_shell_command(command, success_file, error_file, current_user, current_clip, duration):
     try:
+        # Substitui o marcador de posição {duration} no comando pelo valor correto
+        command = command.format(duration=duration)
+
         # Executa o comando shell e captura a saída
         result = subprocess.run(command, shell=True, check=True, capture_output=True, text=True)
-        
-        # Imprime o comando executado no shell
-        print("Comando executado:", command)
 
         # Adiciona a data, hora, nome do clipe e saída do comando à mensagem de sucesso
         success_content = f"Usuário: {current_user}\nData e Hora: {datetime.now()}\nNome do Clipe: {current_clip}\nComando Executado: {command}\nSaída do comando: {result.stdout}\n\n"
-        
+
         # Salva a mensagem de sucesso em um arquivo
         save_to_txt('/usr/share/ffplayout', success_file, success_content)
 
     except subprocess.CalledProcessError as e:
-        print(f"Erro ao executar o comando shell: {e}")
-        print("Saída de erro:", e.stderr)
-
         # Adiciona a data, hora, nome do clipe, comando executado e saída de erro à mensagem de erro
         error_content = f"Usuário: {current_user}\nData e Hora: {datetime.now()}\nNome do Clipe: {current_clip}\nComando Executado: {command}\nErro: {e.stderr}\nSaída de erro: {result.stderr}\n\n"
-        
+
         # Salva a mensagem de erro em um arquivo
         save_to_txt('/usr/share/ffplayout', error_file, error_content)
 
@@ -45,8 +42,6 @@ def clean_old_files(directory, file_prefix, max_age_days):
             file_path.unlink()
 
 if __name__ == '__main__':
-    title = 'ffplayout - current clip:'
-
     # Obter nome do usuário
     current_user = os.getenv('USER') or os.getenv('LOGNAME') or os.getenv('USERNAME')
 
@@ -60,14 +55,14 @@ if __name__ == '__main__':
             input_data = json.loads(sys.argv[1]).get('current_media')
             if input_data is not None:
                 media_source = input_data.get('source', '')
+                duration_seconds = int(input_data.get('duration', 30))  # Se não houver 'duration', assume 30 segundos
                 # Verifica se a palavra "break" está no nome da mídia
                 if 'break' in media_source.lower():
                     save_to_txt('/usr/share/ffplayout', 'current_media.txt', media_source)
 
                     # Substitua o comando abaixo pelo seu comando shell desejado
-                    execute_shell_command('adbreak --pts 0 --duration 30 --sidecar /usr/share/ffplayout/sidecar.txt', 'success_command.txt', 'error_command.txt', current_user, media_source)
+                    execute_shell_command('adbreak --pts 0 --duration {duration} --sidecar /usr/share/ffplayout/sidecar.txt', 'success_command.txt', 'error_command.txt', current_user, media_source, duration_seconds)
         except (json.JSONDecodeError, KeyError):
             pass  # Lidar com erros de decodificação JSON ou chaves ausentes
     else:
         pass  # Lidar com a situação de ausência de argumentos
-
