@@ -7,11 +7,6 @@ import subprocess
 from datetime import datetime, timedelta
 import pathlib
 
-def save_to_txt(directory, filename, content):
-    path = os.path.join(directory, filename)
-    with open(path, 'a') as file:
-        file.write(content)
-
 def execute_shell_command(command, success_file, error_file, current_user, current_clip, duration):
     try:
         # Substitui o marcador de posição {duration} no comando pelo valor correto
@@ -41,6 +36,11 @@ def clean_old_files(directory, file_prefix, max_age_days):
             # Apaga o arquivo se ele tiver mais de max_age_days dias
             file_path.unlink()
 
+def save_to_txt(directory, filename, content):
+    path = os.path.join(directory, filename)
+    with open(path, 'a') as file:
+        file.write(content)
+
 if __name__ == '__main__':
     # Obter nome do usuário
     current_user = os.getenv('USER') or os.getenv('LOGNAME') or os.getenv('USERNAME')
@@ -58,8 +58,6 @@ if __name__ == '__main__':
                 duration_seconds = int(input_data.get('duration', 30))  # Se não houver 'duration', assume 30 segundos
                 # Verifica se a palavra "break" está no nome da mídia
                 if 'break' in media_source.lower():
-                    save_to_txt('/usr/share/ffplayout', 'current_media.txt', media_source)
-
                     # Substitua o comando abaixo pelo seu comando shell desejado
                     execute_shell_command('adbreak --pts 0 --duration {duration} --sidecar /usr/share/ffplayout/sidecar.txt', 'success_command.txt', 'error_command.txt', current_user, media_source, duration_seconds)
         except (json.JSONDecodeError, KeyError):
