@@ -34,7 +34,7 @@ sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/ffmpe
 ```
 # Script ffmpeg - pypy3 - python3 - pip - umzz
 Esse script instala o FFmpeg, Pypy3, Python 3 e pip
-remove o diretório rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED e  rm -rf /usr/lib/pypy3.*/EXTERNALLY-MANAGED
+remove os diretórios rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED e rm -rf /usr/lib/pypy3.*/EXTERNALLY-MANAGED
 e instala a biblioteca umzz para hls SCTE-35.
 ```shell
 wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts-cuda-ffmpeg-x9k3/main/ffmpeg-pypy3-python3-pip-umzz.sh  | bash
