@@ -3,8 +3,8 @@
 # Atualizar lista de pacotes
 sudo apt update
 
-# Instalar pypy3, python 3 e pip
-sudo apt -y install pypy3 python3 python3-pip
+# Instalar pypy3, python 3, pip e ffmpeg
+sudo apt -y install pypy3 python3 python3-pip ffmpeg
 
 # Garantir que o pip esteja instalado para o pypy3
 sudo /usr/bin/pypy3 -m ensurepip
