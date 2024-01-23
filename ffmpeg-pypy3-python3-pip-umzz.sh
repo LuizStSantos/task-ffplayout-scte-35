@@ -19,3 +19,6 @@ sudo rm -rf /usr/lib/pypy3.*/EXTERNALLY-MANAGED
 sudo pypy3 -mpip install umzz
 
 echo "Script concluído com sucesso!"
+echo "Instalação do FFmpeg, Pypy3, Python 3, pip e Umzz concluída com sucesso."
+echo "O diretório /usr/lib/python3.*/EXTERNALLY-MANAGED foi removido."
+echo "O diretório /usr/lib/pypy3.*/EXTERNALLY-MANAGED foi removido."
