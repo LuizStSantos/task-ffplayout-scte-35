@@ -7,7 +7,7 @@ ou
 ```shell
 sudo apt install wget
 ```
-# Scritp Cuda Nvidia "Testado Debian 12"
+# Script Cuda Nvidia "Testado Debian 12"
 Esse script instala o git, curl, build-essential e sudo
 bloqueia o driver nouveau e atualiza o initramfs
 remove o modulo nouveau e atualiza configuração do GRUB
