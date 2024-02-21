@@ -32,7 +32,7 @@ played it will execute but it will not give the command if it is not following s
 ***Standards***
 
 Only the video that contains **break** in the name will be executed.
--.mp4 format only video file format example-
+.mp4 format only video file format example
 
 ***examples***
 
