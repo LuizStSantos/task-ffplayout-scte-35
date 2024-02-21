@@ -1,46 +1,71 @@
-# Guia scritps
-# Pacote necessário
-```shell
-apt install wget
-```
-ou
-```shell
-sudo apt install wget
-```
-# Script Cuda Nvidia "Testado Debian 12"
-Esse script instala o git, curl, build-essential e sudo
-bloqueia o driver nouveau e atualiza o initramfs
-remove o modulo nouveau e atualiza configuração do GRUB
-e para o serviço lightdm faz o download do cuda nvidia; 
-da a apermissão 755 para ele installa o linux-headers,
-executa a instalação do cuda nvidia.
-```shell
-wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/cuda-nvidia.sh | bash
-```
-ou
-```shell
-sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/cuda-nvidia.sh | sudo bash
-```
-# Script ffmpeg - python3 - pip3 - x9k3
-Esse script instala o FFmpeg, Python 3 e pip
-remove o diretório rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED
-e instala a biblioteca x9k3 para hls SCTE-35.
-```shell
-wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/ffmpeg-python3-pip-x9k3.sh | bash
-```
-ou
-```shell
-sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/ffmpeg-python3-pip-x9k3.sh | sudo bash
-```
-# Script ffmpeg - pypy3 - python3 - pip - umzz
-Esse script instala o FFmpeg, Pypy3, Python 3 e pip
-remove os diretórios rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED e rm -rf /usr/lib/pypy3.*/EXTERNALLY-MANAGED
-e instala a biblioteca umzz para hls SCTE-35.
-```shell
-wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/ffmpeg-pypy3-python3-pip-umzz.sh  | bash
-```
-ou
+**task-ffplayout**
 
-```shell
-sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/scripts/main/ffmpeg-pypy3-python3-pip-umzz.sh | sudo bash
+task for ffplayout to execute command for scte-35
+
+**Python and pip install**
+
+``` 
+sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/task-ffplayout/main/python3-pip | sudo bash
+```
+
+**Task download**
+
+```
+sudo wget -c https://raw.githubusercontent.com/LuizStSantos/task-ffplayout/d54275889b8fc46dbe14c76455dad2e0d26483be/task-ffplayout-python3-comand-scte-break-for-SCTE-35-HLS-Sideways
+```
+
+**How the task works**
+
+The task works by executing a SCTE-35-HLS-Sideways command to inject SCTE-35.
+
+**SCTE-35-HLS-Sideways GIT**
+
+```
+https://github.com/futzu/SCTE-35-HLS-Sideways
+```
+
+**How does the task work within ffplayout**
+
+The task is executed in ffplayout in the settings tab where you will add the task file to be executed, with each video 
+played it will execute but it will not give the command if it is not following some rules that I created.
+
+***Standards***
+
+Only the video that contains **break** in the name will be executed.
+-.mp4 format only video file format example-
+
+***examples***
+
+```
+break.mp4
+
+break-video01.mp4
+
+video01-break.mp4
+
+video01-break-video01.mp4
+
+video01-video01-break.mp4
+
+etc...
+```
+
+**scte-35 task cue time**
+
+The scte-35 time is based on the current ffplayout video named break
+
+**Important**
+
+Keep in mind that it will be necessary to make adjustments to the script for better operation, especially in the command 
+executed to synchronize the input of the SCTE-35 command with the break **--pts 0**
+
+```
+62 execute_shell_command('adbreak --pts 0 --duration {duration} --sidecar /usr/share/ffplayout/sidecar.txt
+```
+
+It is also necessary that the file is executed where SCTE-35-HLS-Sideways is first running or the sidecar.txt file is allocated
+**/usr/share/ffplayout/sidecar.txt**
+
+```
+62 execute_shell_command('adbreak --pts 0 --duration {duration} --sidecar /usr/share/ffplayout/sidecar.txt
 ```
