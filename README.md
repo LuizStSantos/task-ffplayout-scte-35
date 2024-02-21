@@ -5,13 +5,13 @@ task for ffplayout to execute command for scte-35
 **Python and pip install**
 
 ``` 
-sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/task-ffplayout/main/python3-pip | sudo bash
+sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/task-ffplayout-scte-35/main/python3-pip | sudo bash
 ```
 
 **Task download**
 
 ```
-sudo wget -c https://raw.githubusercontent.com/LuizStSantos/task-ffplayout/d54275889b8fc46dbe14c76455dad2e0d26483be/task-ffplayout-python3-comand-scte-break-for-SCTE-35-HLS-Sideways
+sudo wget -c https://raw.githubusercontent.com/LuizStSantos/task-ffplayout-scte-35/main/task-ffplayout-python3-comand-scte-break-for-SCTE-35-HLS-Sideways
 ```
 
 **How the task works**
