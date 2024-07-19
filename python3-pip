@@ -10,6 +10,7 @@ apt install -y python3 python3-pip
 rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED
 
 
-echo "Instalação do FFmpeg, Python 3 e pip concluída com sucesso."
+echo "Python 3 e pip concluída com sucesso."
+echo "Python 3 and pip completed successfully."
 echo "O diretório /usr/lib/python3.*/EXTERNALLY-MANAGED foi removido."
-
+echo "The /usr/lib/python3.*/EXTERNALLY-MANAGED directory has been removed."
