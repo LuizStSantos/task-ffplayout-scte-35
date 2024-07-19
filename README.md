@@ -11,7 +11,7 @@ sudo wget -O - https://raw.githubusercontent.com/LuizStSantos/task-ffplayout-sct
 **Task download**
 
 ```
-sudo wget -c https://raw.githubusercontent.com/LuizStSantos/task-ffplayout-scte-35/main/task-ffplayout-python3-comand-scte-break-for-SCTE-35-HLS-Sideways
+sudo wget -c https://raw.githubusercontent.com/LuizStSantos/task-ffplayout-scte-35/main/task-ffplayout-scte-35
 ```
 
 **How the task works**
